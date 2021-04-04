@@ -55,28 +55,6 @@ namespace LeetCodePractice
             return i;
         }
 
-        // /// <summary>
-        // /// https://leetcode.com/explore/learn/card/fun-with-arrays/526/deleting-items-from-an-array/3248/
-        // /// </summary>
-        // /// <param name="nums">Array of ints</param>
-        // /// <returns>Amount of distinct ints</returns>
-        // public static int RemoveDuplicates(int[] nums)
-        // {
-        //     int length = nums.Length;
-        //     for (int i = length - 1; i > 0; i--)
-        //     {
-        //         if (nums[i - 1] == nums[i])
-        //         {
-        //             for (int j = i + 1; j < length; j++)
-        //             {
-        //                 nums[j - 1] = nums[j];
-        //             }
-        //             length--;
-        //         }
-        //     }
-        //     return length;
-        // }
-
         /// <summary>
         /// https://leetcode.com/explore/learn/card/fun-with-arrays/526/deleting-items-from-an-array/3247/
         /// </summary>
