@@ -1,14 +1,40 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Cryptography;
-
+using System.Collections.Generic;
 namespace LeetCodePractice
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.ReadLine();
+            int[] arr = new int[] { 0, 1, 1, 1, 1, 2, 2, 3, 3, 4 };
+            var length = RemoveDuplicates(arr);
+            Console.WriteLine(length);
+            for (int i = 0; i < length; i++)
+            {
+                System.Console.WriteLine($"item number {i} is: {arr[i]}");
+            }
+        }
+
+        /// <summary>
+        /// https://leetcode.com/explore/learn/card/fun-with-arrays/527/searching-for-items-in-an-array/3250/
+        /// </summary>
+        /// <param name="arr">Array of ints</param>
+        /// <returns>Whether there is an element that is a double of another</returns>
+        public bool CheckIfExist(int[] arr)
+        {
+            int length = arr.Length;
+            for (int i = 0; i < length; i++)
+            {
+                for (int j = 0; j < length; j++)
+                {
+                    if (i != j && arr[i] == 2 * arr[j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         /// <summary>
@@ -16,19 +42,40 @@ namespace LeetCodePractice
         /// </summary>
         /// <param name="nums">Array of ints</param>
         /// <returns>Amount of distinct ints</returns>
-        public int RemoveDuplicates(int[] nums)
+        public static int RemoveDuplicates(int[] nums)
         {
-            int length = nums.Length;
-            for (int i = 1; i < length; i++)
+            int i = 0;
+            foreach(int n in nums) 
             {
-                if (nums[i - 1] == nums[i])
+                if (i == 0 || n > nums[i-1]) 
                 {
-
+                    nums[i++] = n;
                 }
             }
-
-            return 0;
+            return i;
         }
+
+        // /// <summary>
+        // /// https://leetcode.com/explore/learn/card/fun-with-arrays/526/deleting-items-from-an-array/3248/
+        // /// </summary>
+        // /// <param name="nums">Array of ints</param>
+        // /// <returns>Amount of distinct ints</returns>
+        // public static int RemoveDuplicates(int[] nums)
+        // {
+        //     int length = nums.Length;
+        //     for (int i = length - 1; i > 0; i--)
+        //     {
+        //         if (nums[i - 1] == nums[i])
+        //         {
+        //             for (int j = i + 1; j < length; j++)
+        //             {
+        //                 nums[j - 1] = nums[j];
+        //             }
+        //             length--;
+        //         }
+        //     }
+        //     return length;
+        // }
 
         /// <summary>
         /// https://leetcode.com/explore/learn/card/fun-with-arrays/526/deleting-items-from-an-array/3247/
@@ -36,7 +83,7 @@ namespace LeetCodePractice
         /// <param name="nums">Array of ints.</param>
         /// <param name="val">Values to remove from nums.</param>
         /// <returns>Amount of remaining elements in nums.</returns>
-        public int RemoveElement(int[] nums, int val)
+        public static int RemoveElement(int[] nums, int val)
         {
             int count = 0;
             int length = nums.Length - 1;
